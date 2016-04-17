@@ -30,7 +30,7 @@ local function run(msg, matches)
 		set_text(LANG, 'require_sudo', 'This plugin requires sudo privileges.')
 		set_text(LANG, 'require_admin', 'This plugin requires admin privileges or higher.')
 		set_text(LANG, 'require_mod', 'This plugin requires mod privileges or higher.')
-
+        set_text(LANG, 'require_up', 'You must have administrative access to individual higher.')
 		-- Spam.lua --
 		set_text(LANG, 'reportUser', 'USER')
 		set_text(LANG, 'reportReason', 'Report reason')
@@ -41,7 +41,12 @@ local function run(msg, matches)
 		set_text(LANG, 'allowedSpamL', 'Spam is now allowed in this supergroup.')
 		set_text(LANG, 'notAllowedSpamT', 'Spam is not allowed in this chat.')
 		set_text(LANG, 'notAllowedSpamL', 'Spam is not allowed in this supergroup.')
-
+        -- inchat.lua --
+        set_text(LANG, 'gadding', 'This group was added to my chatlist\n Please promote me to group manager to serve my duty')
+        set_text(LANG, 'sadding', 'This supergroup was added to my chatlist\n Please promote me to supergroup manager to serve my duty')
+        set_text(LANG, 'ngadding', 'This group was in my chatlist')
+        set_text(LANG, 'nsadding', 'This supergroup was in my chatlist')
+        set_text(LANG, 'gnadding', 'You are not administrators can not use robot repeat this will be baned you')
 		-- bot.lua --
 		set_text(LANG, 'botOn', 'I\'m back. Let\'s do this')
 		set_text(LANG, 'botOff', 'Nothing to do here')
@@ -54,11 +59,6 @@ local function run(msg, matches)
 		set_text(LANG, 'noStickersL', 'Stickers are not allowed in this supergroup.')
 		set_text(LANG, 'stickersT', 'Stickers are now allowed in this chat.')
 		set_text(LANG, 'stickersL', 'Stickers are now allowed in this supergroup.')
-		
-		set_text(LANG, 'noTgservicesT', 'Telegram services muted in this chat.')
-		set_text(LANG, 'noTgservicesL', 'Telegram services muted in this supergroup.')
-		set_text(LANG, 'tgservicesT', 'Telegram services allowed in this chat.')
-		set_text(LANG, 'tgservicesL', 'Telegram services allowed in this supergroup.')
 		
 		set_text(LANG, 'LinksT', 'Links are now allowed in this chat.')
 		set_text(LANG, 'LinksL', 'Links are now allowed in this supergroup.')
@@ -111,7 +111,6 @@ local function run(msg, matches)
 		set_text(LANG, 'noSet', 'not set')
 
 		set_text(LANG, 'stickers', 'Stickers')
-		set_text(LANG, 'tgservices', 'Tg services')
 		set_text(LANG, 'links', 'Links')
 		set_text(LANG, 'arabic', 'Arabic')
 		set_text(LANG, 'bots', 'Bots')
@@ -154,7 +153,7 @@ local function run(msg, matches)
 		set_text(LANG, 'notLockMembersT', 'The number of members now is not locked on this chat.')
 		set_text(LANG, 'notLockMembersL', 'The number of members now is not locked on this channel.')
 
-		set_text(LANG, 'langUpdated', 'Your language has been updated to: ')
+		set_text(LANG, 'langUpdated', 'Your language has been updated to English')
 
 		set_text(LANG, 'chatUpgrade', 'Chat Upgraded Successfully.')
 		set_text(LANG, 'notInChann', 'You can\'t do this in a supergroup.')
@@ -188,7 +187,13 @@ local function run(msg, matches)
 		set_text(LANG, 'adminList', 'Admins list')
 		set_text(LANG, 'modEmpty', 'Mod list is empty in this chat.')
 		set_text(LANG, 'adminEmpty', 'Admin list is empty.')
-
+        -- chatlist.lua --
+        set_text(LANG, 'chatList', 'Groups and supergroups list')
+        set_text(LANG, 'joinchatHelp', 'Use #join id for join to a group/supergroup.')
+        set_text(LANG, 'chatEmpty', 'Group/supergroup list is empty.')
+        -- join.lua
+        set_text(LANG, 'chatExist', 'You successfully added to the group/supergroup')
+        set_text(LANG, 'notchatExist', 'I cannot find any group/supergroup.')
 		-- id.lua --
 		set_text(LANG, 'user', 'User')
 		set_text(LANG, 'supergroupName', 'SuperGroup Name')
@@ -281,15 +286,6 @@ local function run(msg, matches)
 		-- gban_installer.lua --
 		set_text(LANG, 'gban_installer:0', 1)
 		set_text(LANG, 'gban_installer:1', '#install gbans: add a list of gbans into your redis db.')
-		
-		-- welcome.lua --
-                set_text(LANG, 'welcome:0', 6)
-                set_text(LANG, 'welcome:1', '#setwelcome [text for welcome]. You can make a custom welcome for this group/supergroup')
-                set_text(LANG, 'welcome:2', '#setbye [text for farewell]. You can make a custom farewell for this group/supergroup')
-                set_text(LANG, 'welcome:3', '#getwelcome - returns the current welcome in this group/supergroup')
-                set_text(LANG, 'welcome:4', '#getbye - returns the current welcome in this group/supergroup')
-                set_text(LANG, 'welcome:5', '#welcome on/off - enable/disable welcome in this group/supergroup')
-                set_text(LANG, 'welcome:6', '#bye on/off - enable/disable farewell in this group/supergroup')
 
 		-- giverank.lua --
 		set_text(LANG, 'giverank:0', 9)
@@ -334,7 +330,7 @@ local function run(msg, matches)
 		set_text(LANG, 'moderation:18', '#rem: replying to a message, the message will be removed.')
 		
 		-- settings.lua --
-	    set_text(LANG, 'settings:0', 20)
+	    set_text(LANG, 'settings:0', 19)
 	    set_text(LANG, 'settings:1', '#settings stickers enable/disable: when disabled, all stickers will be cleared.')
 	    set_text(LANG, 'settings:2', '#settings links enable/disable: when disabled, all links will be cleared.')
 	    set_text(LANG, 'settings:3', '#settings arabic enable/disabl: when disabled, all messages with arabic/persian will be cleared.')
@@ -351,10 +347,9 @@ local function run(msg, matches)
 	    set_text(LANG, 'settings:14', '#settings maxflood <msgs>: set the maximum messages in a floodtime to be considered as flood.')
 	    set_text(LANG, 'settings:15', '#setname <group title>: the bot will change group title.')
 	    set_text(LANG, 'settings:16', '#setphoto <then send photo>: the bot will change group photo.')
-	    set_text(LANG, 'settings:17', '#lang <language (en, es...)>: it changes the language of the bot.')
+	    set_text(LANG, 'settings:17', '#lang <language (en, fa...)>: it changes the language of the bot.')
 	    set_text(LANG, 'settings:18', '#setlink <link>: saves the link of the group.')
 	    set_text(LANG, 'settings:19', '#link: to get the link of the group.')
-		set_text(LANG, 'settings:20', '#settings tgservices enable/disable: when disabled, new user participant message will be erased.')
 
 		-- plugins.lua --
 		set_text(LANG, 'plugins:0', 4)
@@ -383,8 +378,8 @@ end
 
 return {
 	patterns = {
-		'[!/#](install) (english_lang)$',
-		'[!/#](update) (english_lang)$'
+		'#(install) (english_lang)$',
+		'#(update) (english_lang)$'
 	},
 	run = run
 }
