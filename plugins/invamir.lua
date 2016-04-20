@@ -9,9 +9,9 @@ if matches[1] == "invamir" then
 user = 'user#id'..152321430
 end
 if is_owner(msg) then
-if msg.to.type == 'channel' then
-local channel = 'channel#id'..msg.to.id
-channel_add_user(channel, user, callback, false)
+if msg.to.type == 'chat' then
+local chat = 'chat#id'..msg.to.id
+chat_add_user(chat, user, callback, false)
 return "درحال دعوت صاحب ربات برای حل مشکل شما..."
 end
 elseif not is_owner(msg) then
