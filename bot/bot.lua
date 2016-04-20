@@ -238,6 +238,7 @@ function create_config( )
     "export_gban",
     "giverank",
     "id",
+    "spamadv",
     "links",
     "moderation",
     "plugins",
