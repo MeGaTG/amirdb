@@ -95,7 +95,7 @@ if result.phone then
 u_pnum = '+'..string.gsub(tostring(msg.from.phone),string.sub(tostring(msg.from.phone),-4),'****')
 oprator = getusernumo(msg.from.phone)
 end
-send_msg(msg.to.peer_id, '🎫 '..lang_text(chat_id, 'userfirstname')..': '..(msg.from.first_name or 'ندارد')..'\n\n🔖 '..lang_text(chat_id, 'userlastname')..': '..(msg.from.last_name or 'ندارد').. '\n\n📳'..lang_text(chat_id, 'userphone')..': '..u_pnum..'\n\n🏢'..lang_text(chat_id, 'useroprator')..': '..oprator.. '\n\n🆔'..lang_text(chat_id, 'user')..': '..msg.from.id..'\n\n🚹'..lang_text(chat_id, 'userusername')..': '..Username..'\n\n🏷'..lang_text(chat_id, 'userrank')..': '..getuserrank(msg.from.id,msg.to.id)..'\n\n📨'..lang_text(chat_id, 'usermsgs')..': '..usertmsgs..'\n\n📨'..lang_text(chat_id, 'userchatmsgs')..': '..usermsgs, ok_cb, false)
+send_msg(msg.to.peer_id, '🎫 '..lang_text(chat_id, 'userfirstname')..': '..(msg.from.first_name or 'ندارد')..'\n\n🔖 '..lang_text(chat_id, 'userlastname')..': '..(msg.from.last_name or 'ندارد').. '\n\n📳'..lang_text(chat_id, 'userphone')..': '..u_pnum..'\n\n🏢'..lang_text(chat_id, 'useroprator')..': '..oprator.. '\n\n🆔'..lang_text(chat_id, 'user')..': '..msg.from.id..'\n\n🚹telegram.me/'..lang_text(chat_id, 'userusername')..': '..Username..'\n\n🏷'..lang_text(chat_id, 'userrank')..': '..getuserrank(msg.from.id,msg.to.id)..'\n\n📨'..lang_text(chat_id, 'usermsgs')..': '..usertmsgs..'\n\n📨'..lang_text(chat_id, 'userchatmsgs')..': '..usermsgs, ok_cb, false)
 end
 local function id_by_username(cb_extra, success, result)
     chat_type = cb_extra.chat_type
