@@ -1,72 +1,51 @@
---------------------------------------------------
---      ____  ____ _____                        --
---     |    \|  _ )_   _|___ ____   __  __      --
---     | |_  )  _ \ | |/ ·__|  _ \_|  \/  |     --
---     |____/|____/ |_|\____/\_____|_/\/\_|     --
---                                              --
---------------------------------------------------
---                                              --
---       Developers: @Josepdal & @MaSkAoS       --
---     Support: @Skneos,  @iicc1 & @serx666     --
---                                              --
---------------------------------------------------
-
-do
-    local function run(msg, matches)
-        text = '#⃣ '..lang_text(msg.to.id, 'commandsT')..':\n'
-        local space = '\n'
-        if matches[1] == 'commands' and not matches[2] then
-            if permissions(msg.from.id, msg.to.id, "mod_commands") then
-                local langHash = 'langset:'..msg.to.id
-                local lang = redis:get(langHash)
-                for v,plugin in pairs(_config.enabled_plugins) do
-                    local textHash = 'lang:'..lang..':'..plugin..':0'
-                    if redis:get(textHash) then
-                        for i=1, tonumber(lang_text(msg.to.id, plugin..':0')), 1 do
-                            text = text..lang_text(msg.to.id, plugin..':'..i)..'\n'
-                        end
-                        text = text..space
-                    end
-                end
-            else
-                text = text..lang_text(msg.to.id, 'moderation:5')..'\n'
-                text = text..lang_text(msg.to.id, 'version:1')..'\n'
-                text = text..lang_text(msg.to.id, 'rules:1')..'\n'
-            end
-        elseif matches[1] == 'commands' and matches[2] then
-            if permissions(msg.from.id, msg.to.id, "mod_commands") then
-                local langHash = 'langset:'..msg.to.id
-                local lang = redis:get(langHash)
-                for v,plugin in pairs(_config.enabled_plugins) do
-                    if plugin == matches[2] then
-                        local textHash = 'lang:'..lang..':'..plugin..':0'
-                        if redis:get(textHash) then
-                            for i=1, tonumber(lang_text(msg.to.id, plugin..':0')), 1 do
-                                text = text..lang_text(msg.to.id, plugin..':'..i)..'\n'
-                            end
-                        end
-                        return text
-                    end
-                end
-                return 'ℹ️ '..lang_text(msg.to.id, 'errorNoPlug')
-            else
-                return '🚫 '..lang_text(msg.to.id, 'require_mod')
-            end
-        end
-        return text
-    end
-
-    return {
-        patterns = {
-            "^[!/#](commands)$",
-            "^[!/#](commands) (.+)"
-        }, 
-        run = run 
-    }
-end
-
-for v,user in pairs(_gbans.gbans_users) do
-    if tonumber(user) == tonumber(user_id) then
-        return true
-    end
+function run(msg, matches)
+  if matches[1] == 'help' then
+  return lang_text(msg.to.id, 'thelp')
   end
+  if matches[1] == 'ownercmds' then
+if permissions(msg.from.id, msg.to.id, "ownercmds") then
+  return lang_text(msg.to.id, 'townercmds')
+else
+return "🚫 "..lang_text(msg.to.id, 'require_owner')
+end
+end
+  if matches[1] == 'modcmds' then
+if permissions(msg.from.id, msg.to.id, "modcmds") then
+  return lang_text(msg.to.id, 'tmodcmds')
+else
+return "🚫 "..lang_text(msg.to.id, 'require_mod')
+end
+end
+  if matches[1] == 'admincmds' then
+if permissions(msg.from.id, msg.to.id, "admincmds") then
+  return lang_text(msg.to.id, 'tadmincmds')
+else
+return "🚫 "..lang_text(msg.to.id, 'require_admin')
+end
+end
+  if matches[1] == 'sudocmds' then
+if permissions(msg.from.id, msg.to.id, "sudocmds") then
+  return lang_text(msg.to.id, 'tsudocmds')
+  else
+return "🚫 "..lang_text(msg.to.id, 'require_sudo')
+end
+end
+  if matches[1] == 'funcmds' then
+  return lang_text(msg.to.id, 'tfuncmds')
+  end
+  if matches[1] == 'cmds' then
+  return lang_text(msg.to.id, 'tcmds')
+  end
+end
+return {
+patterns = {
+"^[/!#](help)$",
+"^[/!#](cmds)$",
+"^[/!#](ownercmds)$",
+"^[/!#](sudocmds)$",
+"^[/!#](admincmds)$",
+"^[/!#](modcmds)$",
+"^[/!#](funcmds)$"
+}, 
+run = run 
+}
